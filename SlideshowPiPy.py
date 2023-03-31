@@ -4,12 +4,12 @@ import os.path
 import random
 pygame.init()
 path = "/home/pi64/PiPySlideshow"
+infoObject = pygame.display.Info()
 screen = pygame.display.set_mode((infoObject.current_w,infoObject.current_h), pygame.FULLSCREEN)  # Full screen 
 def show_image(image_path):	
     screen.fill(pygame.Color("white")) # clear the screen	
     img = pygame.image.load(image_path) # load the image
     img = img.convert()	
-    infoObject = pygame.display.Info()
     set_demensions(img.get_width(), img.get_height()) # set pixel dimensions based on image	
     x = (infoObject.current_w / 2) - (img.get_width() / 2)
     y = (infoObject.current_h / 2) - (img.get_height() / 2)
