@@ -47,7 +47,6 @@ def show_image(image_path):
     y = (infoObject.current_h / 2) - (img.get_height() / 2)
     screen.blit(img,(x,y))
     pygame.display.flip()
-    pygame.display.flip()
 piclist =[]
 def updatepics(path,piclist):
     dir_list = os.listdir(path)
@@ -68,6 +67,8 @@ while True:
     show_image(path+"/"+str(piclist[i]))
     time.sleep(2)
     if i %15 ==14:
+        gpout = subprocess.Popen("rsync -avz -e ssh pi@192.168.1.155:Slideshow/ PiPySlideshow",shell =True) 
+        gpout1=gpout.wait()
         piclist = updatepics(path,piclist)
         random.shuffle(piclist)
     for event in pygame.event.get():   
