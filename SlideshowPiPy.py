@@ -90,6 +90,7 @@ def updatepics(path,piclist):
     return piclist
 i=0
 j=0
+finaldir = "AH 2023 04 01 Phils 40th"
 ##SHow the 5 most recent pics first
 piclist = updatepics(path,piclist)
 random.shuffle(piclist)
@@ -100,7 +101,7 @@ while True:
     if i ==count:
         i=0
     if j%5==3:
-        gpout = subprocess.Popen("rsync -avz -e ssh pi@192.168.1.155:Photos/'AH 2023 04 01 Phils 40th'/ PiPySlideshow",shell =True) 
+        gpout = subprocess.Popen("rsync -avz -e ssh pi@192.168.1.155:Photos/"+str(finaldir)+"/ PiPySlideshow",shell =True) 
         gpout1=gpout.wait()
         piclist = updatepics(path,piclist)
         random.shuffle(piclist)
