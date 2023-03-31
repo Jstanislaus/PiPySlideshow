@@ -2,7 +2,9 @@ import pygame
 from PIL import Image, ImageDraw
 import os.path
 import random
+pygame.init()
 path = "/home/pi64/PiPySlideshow"
+screen = pygame.display.set_mode((infoObject.current_w,infoObject.current_h), pygame.FULLSCREEN)  # Full screen 
 def show_image(image_path):	
     screen.fill(pygame.Color("white")) # clear the screen	
     img = pygame.image.load(image_path) # load the image
