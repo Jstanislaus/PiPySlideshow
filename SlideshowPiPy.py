@@ -27,6 +27,7 @@ i=0
 piclist = updatepics(path,piclist)
 random.shuffle(piclist)
 while True:
+    print(path+"/"+str(piclist[i]))
     show_image(path+"/"+str(piclist[i]))
     if i %15 ==14:
         piclist = updatepics(path,piclist)
