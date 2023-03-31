@@ -39,7 +39,7 @@ def set_demensions(img_w, img_h):
         transform_x = infoObject.current_w
         transform_y = infoObject.current_h
         offset_y = offset_x = 0
-def show_image(image_path):
+def show_image(image_path,screen):
     img = pygame.image.load(image_path)
     screen.fill(pygame.Color("white"))
     x,y = screen.get_size()##no reratio needed, just resize
@@ -96,7 +96,7 @@ while True:
         piclist = updatepics(path,piclist)
         random.shuffle(piclist)
     print(path+"/"+str(piclist[i]))
-    show_image((path+"/"+str(piclist[i])))
+    show_image((path+"/"+str(piclist[i])),screen)
     time.sleep(2)
     for event in pygame.event.get():   
         if event.type == pygame.KEYDOWN:
