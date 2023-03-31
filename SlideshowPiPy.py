@@ -3,6 +3,7 @@ from PIL import Image, ImageDraw
 import PIL.Image
 import os.path
 import random
+import time
 pygame.init()
 path = "/home/pi64/PiPySlideshow"
 infoObject = pygame.display.Info()
@@ -58,7 +59,10 @@ i=0
 ##SHow the 5 most recent pics first
 piclist = updatepics(path,piclist)
 random.shuffle(piclist)
+count = len(piclist)
 while True:
+    if i ==count:
+        i=0
     print(path+"/"+str(piclist[i]))
     show_image(path+"/"+str(piclist[i]))
     time.sleep(2)
