@@ -45,8 +45,8 @@ def show_image(image_path,screen):
     x,y = screen.get_size()##no reratio needed, just resize
     width = int(img.get_width())
     print(width)
-    print(height)
     height = int(img.get_height())
+    print(height)
     if int(width/6)>(height/4):#This only works if height or width fits in the surface
         step = int(height/4)
     else:
