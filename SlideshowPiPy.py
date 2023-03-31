@@ -51,7 +51,7 @@ piclist =[]
 def updatepics(path,piclist):
     dir_list = os.listdir(path)
     for i in range(0,len(dir_list)):
-        print(dir_list[i][-3:])
+        #print(dir_list[i][-3:])
         if dir_list[i] not in piclist:
             if dir_list[i][-3:]=="jpg" or dir_list[i][-3:]=="JPG" or dir_list[i][-3:]=="PNG" or dir_list[i][-3:]=="png":
                 print("Hi3")
@@ -69,7 +69,7 @@ while True:
     print(path+"/"+str(piclist[i]))
     show_image(path+"/"+str(piclist[i]))
     time.sleep(2)
-    if i %15 ==14:
+    if i %4 ==3:
         gpout = subprocess.Popen("rsync -avz -e ssh pi@192.168.1.155:Slideshow/ PiPySlideshow",shell =True) 
         gpout1=gpout.wait()
         piclist = updatepics(path,piclist)
