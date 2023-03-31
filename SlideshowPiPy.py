@@ -87,6 +87,7 @@ random.shuffle(piclist)
 count = len(piclist)
 print(piclist)
 while True:
+    print(i)
     if i ==count:
         i=0
     if j%5==3:
