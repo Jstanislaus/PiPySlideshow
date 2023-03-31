@@ -47,6 +47,7 @@ def show_image(image_path):
     y = (infoObject.current_h / 2) - (img.get_height() / 2)
     screen.blit(img,(x,y))
     pygame.display.flip()
+    pygame.display.flip()
 piclist =[]
 def updatepics(path,piclist):
     dir_list = os.listdir(path)
