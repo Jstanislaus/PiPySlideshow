@@ -39,7 +39,7 @@ def set_demensions(img_w, img_h):
         transform_y = infoObject.current_h
         offset_y = offset_x = 0
 def show_image(image_path):	
-    screen.fill(pygame.Color("white")) # clear the screen	
+    screen.fill(pygame.Color("black")) # clear the screen	
     img = pygame.image.load(image_path) # load the image
     img = img.convert()	
     set_demensions(img.get_width(), img.get_height()) # set pixel dimensions based on image	
@@ -69,5 +69,10 @@ while True:
     if i %15 ==14:
         piclist = updatepics(path,piclist)
         random.shuffle(piclist)
+    for event in pygame.event.get():   
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                print("escape Key Pressed Exiting..")
+                pygame.quit()
     i+=1
 
