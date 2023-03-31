@@ -67,7 +67,7 @@ def show_image(image_path):
     height2 = top2+bottom2
         # Make the image full screen
     cropimg = pygame.transform.scale(cropimg1, (width2,height2))
-    screen.blit(img,(x,y))
+    screen.blit(cropimg,(x,y))
     pygame.display.flip()
 piclist =[]
 def updatepics(path,piclist):
