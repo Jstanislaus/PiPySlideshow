@@ -58,6 +58,7 @@ def updatepics(path,piclist):
                 piclist.append(dir_list[i])
     return piclist
 i=0
+j=0
 ##SHow the 5 most recent pics first
 piclist = updatepics(path,piclist)
 random.shuffle(piclist)
@@ -66,18 +67,19 @@ print(piclist)
 while True:
     if i ==count:
         i=0
-    print(path+"/"+str(piclist[i]))
-    show_image(path+"/"+str(piclist[i]))
-    time.sleep(2)
-    if i %4 ==3:
+    if j%5==3:
         gpout = subprocess.Popen("rsync -avz -e ssh pi@192.168.1.155:Slideshow/ PiPySlideshow",shell =True) 
         gpout1=gpout.wait()
         piclist = updatepics(path,piclist)
         random.shuffle(piclist)
+    print(path+"/"+str(piclist[i]))
+    show_image(path+"/"+str(piclist[i]))
+    time.sleep(2)
     for event in pygame.event.get():   
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 print("escape Key Pressed Exiting..")
                 pygame.quit()
     i+=1
+    j+=1
 
