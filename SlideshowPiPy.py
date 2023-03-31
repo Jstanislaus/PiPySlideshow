@@ -39,15 +39,7 @@ def set_demensions(img_w, img_h):
         transform_x = infoObject.current_w
         transform_y = infoObject.current_h
         offset_y = offset_x = 0
-def show_image(image_path,screen):
-    img = pygame.image.load(image_path)
-    img = img.convert()
-    screen.fill(pygame.Color("white"))
-    x,y = screen.get_size()##no reratio needed, just resize
-    width = int(img.get_width())
-    print(width)
-    height = int(img.get_height())
-    print(height)
+def getcropdim(width,height):
     if int(width/6)>(height/4):#This only works if height or width fits in the surface
         step = int(height/4)
     else:
@@ -56,8 +48,9 @@ def show_image(image_path,screen):
     top= (height/2)-(2*step)
     width = (6*step)
     height = (4*step)
-    cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
+    return left, top, width,height
 
+def resizedim(x,y):
     if int(x/6)*2>(y/2):
         step = int(y/4)
     else:
@@ -68,9 +61,22 @@ def show_image(image_path,screen):
     bottom2 = (y/2)+(2*step)
     width2 = left2+right2
     height2 = top2+bottom2
+    return width2,height2
+def show_image(image_path,screen):
+    img = pygame.image.load(image_path)
+    img = img.convert()
+    screen.fill(pygame.Color("white"))
+    x,y = screen.get_size()##no reratio needed, just resize
+    width = int(img.get_width())
+    height = int(img.get_height())
+    left, top, width,height = getcropdim(width,height)
+    cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
+    width2,height2 = resizedim(x,y)
         # Make the image full screen
     cropimg = pygame.transform.scale(cropimg1, (width2,height2))
-    screen.blit(cropimg,(x,y))
+    width3 = int(cropimg.get_width())
+    height3 = int(cropimg.get_height())
+    screen.blit(cropimg,((x/2)-(width3/2),(y/2)-(height3/2))))
     pygame.display.flip()
 piclist =[]
 def updatepics(path,piclist):
