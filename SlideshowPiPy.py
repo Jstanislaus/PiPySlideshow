@@ -41,7 +41,7 @@ def set_demensions(img_w, img_h):
         offset_y = offset_x = 0
 def show_image(image_path):
     img = pygame.image.load(image_path)
-    screen.fill(pygame.Color("black"))
+    screen.fill(pygame.Color("white"))
     x,y = screen.get_size()##no reratio needed, just resize
     width = int(img.get_width())
     height = int(img.get_height())
