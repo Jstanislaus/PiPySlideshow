@@ -63,8 +63,8 @@ def show_image(image_path):
     left2 = (x/2)-(3*step)
     right2 = (x/2)+(3*step)
     bottom2 = (y/2)+(2*step)
-    width2 = left2+right2-(6*Finalimagereduction)
-    height2 = top2+bottom2-(4*Finalimagereduction)
+    width2 = left2+right2-
+    height2 = top2+bottom2-
         # Make the image full screen
     cropimg = pygame.transform.scale(cropimg1, (width2,height2))
     screen.blit(img,(x,y))
