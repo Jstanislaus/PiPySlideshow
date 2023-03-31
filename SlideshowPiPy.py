@@ -4,6 +4,7 @@ import PIL.Image
 import os.path
 import random
 import time
+import RPi.GPIO as GPIO, time, os, subprocess,shlex
 pygame.init()
 path = "/home/pi64/PiPySlideshow"
 infoObject = pygame.display.Info()
