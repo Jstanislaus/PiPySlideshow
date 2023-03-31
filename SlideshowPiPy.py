@@ -61,6 +61,7 @@ random.shuffle(piclist)
 while True:
     print(path+"/"+str(piclist[i]))
     show_image(path+"/"+str(piclist[i]))
+    time.sleep(2)
     if i %15 ==14:
         piclist = updatepics(path,piclist)
         random.shuffle(piclist)
