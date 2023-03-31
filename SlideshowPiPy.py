@@ -60,6 +60,7 @@ i=0
 piclist = updatepics(path,piclist)
 random.shuffle(piclist)
 count = len(piclist)
+print(piclist)
 while True:
     if i ==count:
         i=0
