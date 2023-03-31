@@ -1,6 +1,8 @@
 import pygame
 from PIL import Image, ImageDraw
-
+import os.path
+import random
+path = "/home/pi64/PiPySlideshow"
 def show_image(image_path):	
     screen.fill(pygame.Color("white")) # clear the screen	
 	  img = pygame.image.load(image_path) # load the image
@@ -11,20 +13,21 @@ def show_image(image_path):
 	  y = (infoObject.current_h / 2) - (img.get_height() / 2)
 	  screen.blit(img,(x,y))
     pygame.display.flip()
-def updatepics(path,screen_width,screen_height,win,countarray):    
+piclist =[]
+def updatepics(path,piclist):
+    dir_list = os.listdir(path)
     for i in range(0,len(dir_list)):
-        if dir_list[i] not in countarray:
-            if dir_list[i][-3:]=="jpg" or dir_list[i][-3:]=="JPG" or dir_list[i][-3:]=="PNG" or dir_list[i][-3:]=="png":
-                img = Image.open(str(dir_list[i]))
-                w,h = img.size
-                ratio = h/w
-                if ratio > 1:
-                    resized_image = img.resize((int(screen_width),int(ratio * screen_width)))
-                else:
-                    ratio = w/h
-                    resized_image = img.resize((int(screen_height * ratio),int(screen_height)))
-                img = ImageTk.PhotoImage(resized_image)
-                imgarray.append(img)
-                countarray.append(dir_list[i])
-    return imgarray,countarray
-imgarray, countarray = updatepics(path,screen_width,screen_height,win,countarray)
+        if dir_list[i] not in piclist:
+            piclist.append(dir_list[i])
+    return piclist
+i=0
+##SHow the 5 most recent pics first
+piclist = updatepics(path,piclist)
+random.shuffle(piclist)
+while True:
+    show_image(path+"/"+str(countarray[i]))
+    if i %15 ==14:
+        piclist = updatepics(path,piclist)
+        random.shuffle(piclist)
+    i+=1
+
