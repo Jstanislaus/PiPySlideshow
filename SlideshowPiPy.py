@@ -100,7 +100,7 @@ while True:
     if i ==count:
         i=0
     if j%5==3:
-        gpout = subprocess.Popen("rsync -avz -e ssh pi@192.168.1.155:Slideshow/ PiPySlideshow",shell =True) 
+        gpout = subprocess.Popen("rsync -avz -e ssh pi@192.168.1.155:Photos/'AH 2023 04 01 Phils 40th'/ PiPySlideshow",shell =True) 
         gpout1=gpout.wait()
         piclist = updatepics(path,piclist)
         random.shuffle(piclist)
