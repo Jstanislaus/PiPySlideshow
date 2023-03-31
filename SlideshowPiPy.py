@@ -1,5 +1,6 @@
 import pygame
 from PIL import Image, ImageDraw
+import PIL.Image
 import os.path
 import random
 pygame.init()
