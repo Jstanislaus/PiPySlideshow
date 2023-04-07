@@ -105,6 +105,7 @@ while True:
         piclist = updatepics(path,piclist)
         random.shuffle(piclist)
     print(path+"/"+str(piclist[i]))
+    print((path+"/"+str(piclist[i])))
     show_image((path+"/"+str(piclist[i])),screen)
     time.sleep(2)
     for event in pygame.event.get():   
