@@ -100,14 +100,14 @@ while True:
     if i ==count:
         i=0
     if j%5==3:
-        gpout = subprocess.Popen("rsync -avz -e ssh pi@192.168.1.212:Photobooth-printer-management/Photobooth_printer_management/Template/AH_2023_04_01_Phils_40th/Final_Templates/ PiPySlideshow",shell =True) 
+        gpout = subprocess.Popen("rsync -avz -e ssh pi@192.168.1.248:Photobooth-printer-management/Photobooth_printer_management/Template/AH_2023_04_01_Phils_40th/individual_images/ PiPySlideshow",shell =True) 
         gpout1=gpout.wait()
         piclist = updatepics(path,piclist)
         random.shuffle(piclist)
     print(path+"/"+str(piclist[i]))
-    print((path+"/"+str(piclist[i])))
+    print(path+"/"+str(piclist[i]))
     show_image((path+"/"+str(piclist[i])),screen)
-    time.sleep(2)
+    time.sleep(5)
     for event in pygame.event.get():   
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
