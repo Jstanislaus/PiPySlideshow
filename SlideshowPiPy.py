@@ -80,14 +80,15 @@ def show_image(image_path,screen):
     pygame.display.flip()
 piclist =[]
 def updatepics(path,piclist):
+    newimglist = []
     dir_list = os.listdir(path)
     for i in range(0,len(dir_list)):
         #print(dir_list[i][-3:])
         if dir_list[i] not in piclist:
             if dir_list[i][-3:]=="jpg" or dir_list[i][-3:]=="JPG" or dir_list[i][-3:]=="PNG" or dir_list[i][-3:]=="png":
-                print("Hi3")
                 piclist.append(dir_list[i])
-    return piclist
+                newimglist.append(dir_list[i])
+    return piclist,newimglist
 i=0
 j=0
 ##SHow the 5 most recent pics first
@@ -99,14 +100,20 @@ while True:
     print(i)
     if i ==count:
         i=0
-    if j%5==3:
+    if j%7==4:
         gpout = subprocess.Popen("rsync -avz -e ssh pi@192.168.1.248:Photobooth-printer-management/Photobooth_printer_management/Template/AI_2023_05_06_KingsCoronationWhitefriars/Individual_Photos/ PiPySlideshow/PiPySlideshow",shell =True) 
         gpout1=gpout.wait()
-        piclist = updatepics(path,piclist)
+        piclist,newimglist = updatepics(path,piclist)
         random.shuffle(piclist)
+        if len(piclist)>=0:
+            piclist.extend(newimglist)
+            piclist.reverse()
     print(path+"/"+str(piclist[i]))
     print(path+"/"+str(piclist[i]))
-    show_image((path+"/"+str(piclist[i])),screen)
+    try:
+        show_image((path+"/"+str(piclist[i])),screen)
+    except:
+        pass
     time.sleep(5)
     for event in pygame.event.get():   
         if event.type == pygame.KEYDOWN:
