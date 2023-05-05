@@ -92,7 +92,7 @@ def updatepics(path,piclist):
 i=0
 j=0
 ##SHow the 5 most recent pics first
-piclist = updatepics(path,piclist)
+piclist,newimglist = updatepics(path,piclist)
 random.shuffle(piclist)
 count = len(piclist)
 print(piclist)
